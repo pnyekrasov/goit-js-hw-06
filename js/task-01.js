@@ -1,15 +1,14 @@
-const navEl = document.querySelector('#categories');
-console.log(navEl);
 
-const calculateСategories = (navEl) => {
-  let quantityСategories = 0;
-navEl.forEach(i => {
-    quantityСategories += i
+const categoriesEls = document.querySelectorAll('.item');
+console.log(`Number of categories: ${categoriesEls.length}`);
+
+categoriesEls.forEach(item => {
+  console.log(`Category: ${item.firstElementChild.textContent}`);
+  console.log(`Elements: ${item.lastElementChild.querySelectorAll('li').length}`)
+;
 });
 
-  return quantityСategories;
-}
 
 
 
-console.log(calculateСategories);
+
