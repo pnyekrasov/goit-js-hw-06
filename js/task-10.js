@@ -4,14 +4,28 @@ function getRandomHexColor() {
     .padStart(6, 0)}`;
 }
 
+const userNumberEl = document.querySelector('input');
+const createBtnEl = document.querySelector('button');
+const destroyBtnEl = createBtnEl.nextElementSibling;
+const containerEl = document.querySelector('#boxes')
+
+createBtnEl.addEventListener('click', handleCreateBoxes);
+destroyBtnEl.addEventListener('click', handleDestroyBoxes);
 
 
-    <div style="
-   width: 30px;
-   height: 30px;
-        background-color: red;"></div>
+function handleCreateBoxes(amount) {
+amount = Number(userNumberEl.value);
+  for (let index = 0; index < amount; index += 1) {
+    const element = document.createElement('div');
+    const value = 30 + 10 * index;
+    const color = getRandomHexColor();
+     element.style.cssText = `width: ${value}px; height: ${value}px; background-color: ${color};`;
+    containerEl.appendChild(element);
+  };
+};
 
-    <div style="
-       width: 40px;
-       height: 40px;
-            background-color: blue;"></div>
+function handleDestroyBoxes() {
+  containerEl.innerHTML = '';
+  userNumberEl.value = '';
+}
+

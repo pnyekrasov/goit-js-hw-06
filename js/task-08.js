@@ -1,23 +1,22 @@
-const elements = {
-    formEl: document.querySelector('.login-form'),
-    formsLabelInput: document.querySelectorAll('input '),
-    formSubmitBtnEl: document.querySelector('button'),
-};
-console.log(elements.formsLabelInput);
-elements.formsLabelInput[0].addEventListener('input', ({ target }) => {
-    console.log(123);
-    console.log(target.value)
-});
-//     console.log(elements.formsLabelInput[0]);
-//     if (target.value.trim() = '') {
-//         console.log(Yes);
-//         alert('Attention! Fill in all the fields');
-//     };
-// });
+const formEl = document.querySelector('.login-form');
 
-elements.formEl.addEventListener('submit', (e) => {
-    e.preventDefault();
+formEl.addEventListener('submit', handleDisplayReport);
 
-    console.log('Hi');
-    elements.formEl.reset();
-});
+function handleDisplayReport(e) {
+  e.preventDefault();
+  const {
+    elements: { email, password }
+  } = e.currentTarget;
+
+  if (email.value === "" || password.value === "") {
+      alert('Attention! Fill in all fields before "Login", please ;)');
+      return;
+    };
+
+    const formData = new FormData(e.currentTarget);
+    formData.forEach((value, textContent) => {
+        console.log(textContent, value);
+    });  
+  e.currentTarget.reset();
+}
+
